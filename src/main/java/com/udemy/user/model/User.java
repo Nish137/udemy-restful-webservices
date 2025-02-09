@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity(name ="user_details")
 public class User {
 
@@ -15,7 +17,8 @@ public class User {
     //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("birth_date")
     private LocalDate birth_Date;
-
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
     @Override
     public String toString() {
         return "User{" +
